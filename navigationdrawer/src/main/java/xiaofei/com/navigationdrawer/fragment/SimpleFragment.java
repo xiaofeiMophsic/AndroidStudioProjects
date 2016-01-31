@@ -19,17 +19,19 @@ import xiaofei.com.navigationdrawer.R;
 public class SimpleFragment extends Fragment {
 
     private static final String ARG_SELECTION_NUM = "arg_selection_num";
+    private static final String ARG_SELECTION_CONTENT = "arg_selection_content";
 
     @Bind(R.id.main_tv_text)
     TextView mTvText;
 
     public SimpleFragment() {}
 
-    public static SimpleFragment newInstance(int selectionNum){
+    public static SimpleFragment newInstance(int selectionNum, int content){
 
         SimpleFragment simpleFragment = new SimpleFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_SELECTION_NUM, selectionNum);
+        args.putInt(ARG_SELECTION_CONTENT, content);
         simpleFragment.setArguments(args);
         return simpleFragment;
     }
@@ -45,7 +47,7 @@ public class SimpleFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mTvText.setText("Page " + String.valueOf(getArguments().getInt(ARG_SELECTION_NUM)));
+        mTvText.setText(getArguments().getInt(ARG_SELECTION_CONTENT));
     }
 
     @Override
